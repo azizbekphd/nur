@@ -1,0 +1,86 @@
+.wrapper {
+    top: 0;
+    position: sticky;
+    z-index: 1000;
+    width: 100%;
+    backdrop-filter: grayscale(1) blur(15px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px min(10%, 30px);
+}
+
+.logo {
+    object-fit: contain;
+    object-position: left center;
+}
+
+.toggler {
+    display: none;
+    margin: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.toggler span {
+    display: block;
+    height: 3px;
+    width: 24px;
+    border-radius: 1.5px;
+    background: var(--text-color);
+    margin: 5px 0;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+.open .toggler span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 7.5px);
+}
+
+.open .toggler span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -7.5px);
+}
+
+.open .toggler span:nth-child(2) {
+    width: 0;
+}
+
+.content {
+    margin: 0;
+    list-style-type: none;
+}
+
+.space {
+    flex: 1;
+}
+
+.trailing {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+
+    .content {
+        width: 100%;
+        height: 0;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+        overflow: hidden;
+    }
+
+    .open .content {
+        flex-grow: 1;
+        padding-top: 20px;
+        height: 100vh;
+    }
+
+    .toggler {
+        display: block;
+    }
+
+}

@@ -1,12 +1,20 @@
-html,
+html {
+  --orange: #ff6800;
+  --orange-light: #ffaa00;
+  --green: #00cc00;
+  --blue: #061198;
+  --background: #f8f8f8;
+  --text-color: #202020;
+}
+
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  -orange: #ff6800;
-  -green: #00cc00;
-  -blue: #061198;
+
+  background-color: var(--background);
+  color: var(--text-color);
 }
 
 a {
@@ -21,9 +29,7 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
+    --text-color: #f8f8f8;
+    --background: #202020;
   }
 }

@@ -1,0 +1,88 @@
+.button {
+    padding: 15px 20px;
+    margin: 8px;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+    display: inline-block;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+/* TextButton */
+
+.textButton {
+    display: inline-block;
+    position: relative;
+}
+
+.textButton::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    top: 0;
+    left: 0;
+    background-color: currentColor;
+    transform-origin: top left;
+    transition: transform 0.25s ease-out;
+}
+
+.textButton:hover::before {
+    transform: scaleX(1);
+    transform-origin: top right;
+}
+
+.textButton::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.textButton:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* HighlightedButton */
+
+.highlightedButton {
+    position: relative;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    border: solid 3px transparent;
+    background-color: var(--background);
+    border-radius: 1em;
+}
+
+.highlightedButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -3px;
+    border-radius: inherit;
+    background: linear-gradient(to right, var(--orange), var(--orange-light));
+}
+
+.highlightedButton:hover {
+    background-color: transparent;
+    color: white;
+}
+
+.highlightedButton:hover::before {
+    background: linear-gradient(to left, var(--orange), var(--orange-light));
+}

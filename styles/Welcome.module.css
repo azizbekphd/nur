@@ -1,0 +1,13 @@
+.title {
+    font-size: clamp(1rem, 10vw, 7rem);
+    text-align: center;
+    width: clamp(90%, 700px, 70%);
+    display: block;
+}
+
+.gradientHighlight {
+    background: linear-gradient(-45deg, var(--green), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
