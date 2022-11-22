@@ -1,0 +1,5 @@
+.textLink {
+    font-size: var(--small);
+    color: var(--orange);
+    font-weight: bold;
+}

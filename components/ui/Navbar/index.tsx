@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
-import { TextButton } from "..";
+import { HighlightedButton, TextButton } from "..";
 import { classNames } from "../../../utils";
-import HighlightedButton from "../buttons/HighlightedButton";
 import styles from "./Navbar.module.css";
 
 type NavbarProps = {
@@ -17,7 +16,7 @@ const Navbar = ({ logo = true, signedIn }: NavbarProps) => {
     <nav className={classNames([styles.wrapper, open && styles.open])} onClick={()=>{setOpen(false)}}>
       {logo ? (
         <Image
-          src={"/logo-small.png"}
+          src={"/logo.png"}
           alt="Nur"
           width={150}
           height={50}

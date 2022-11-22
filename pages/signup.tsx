@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import styles from "../styles/AuthPage.module.css";
 import bg from "../public/images/library.jpg";
 import Image from "next/image";
-import { classNames, useWindowSize } from "../utils";
+import { useWindowSize } from "../utils";
 import { motion } from "framer-motion";
 import {
   Checkbox,
@@ -12,7 +12,7 @@ import {
   TextLink,
 } from "../components";
 
-const SignIn: NextPage = () => {
+const SignUp: NextPage = () => {
   const windowSize = useWindowSize();
 
   return (
@@ -41,40 +41,37 @@ const SignIn: NextPage = () => {
             height={60}
             className={styles.logo}
           />
-          <h1 className={styles.title}>Welcome back</h1>
-          <p className={styles.subtitle}>
-            Welcome back! Please, enter your details
-          </p>
+          <h1 className={styles.title}>Create a new account</h1>
+          <p className={styles.subtitle}>Welcome! Please, enter your details</p>
           <form>
             <Input
               label={"Email"}
               type="email"
               placeholder={"Enter your email"}
             />
+            <div className={styles.row}>
+              <Input label={"Name"} placeholder={"John"} />
+              <Input label={"Last name"} placeholder={"Doe"} />
+            </div>
             <Input
               label={"Password"}
               type="password"
               placeholder={"Enter your password"}
             />
-            <div className={classNames([styles.row, styles.indented])}>
-              <Checkbox label={"Remember for 30 days"} />
-              <TextLink href={"/password-recovery"}>Forgot password</TextLink>
-            </div>
-            <div className={styles.indented}>
-              <FilledButton onClick={() => {}}>Sign in</FilledButton>
-              <OutlinedButton onClick={() => {}}>
-                <Image
-                  src={"/images/google-g.svg"}
-                  width={24}
-                  height={24}
-                  alt={"Google logo"}
-                  className={styles.googleLogo}
-                />
-                Sign in with Google
-              </OutlinedButton>
-            </div>
-            <p className={classNames([styles.hint, styles.indented])}>
-              Don't have an account? <TextLink href="/signup">Sign up</TextLink>
+            <FilledButton onClick={() => {}}>Sign up</FilledButton>
+            <OutlinedButton onClick={() => {}}>
+              <Image
+                src={"/images/google-g.svg"}
+                width={24}
+                height={24}
+                alt={"Google logo"}
+                className={styles.googleLogo}
+              />
+              Sign up with Google
+            </OutlinedButton>
+            <p className={styles.hint}>
+              Already have an account?{" "}
+              <TextLink href="/signin">Sign in</TextLink>
             </p>
           </form>
         </div>
@@ -83,4 +80,4 @@ const SignIn: NextPage = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

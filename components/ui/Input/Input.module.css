@@ -1,0 +1,27 @@
+.wrapper, .labelWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.label {
+    font-size: var(--small);
+    font-weight: bold;
+}
+
+:is(.label, .input):first-child {
+    margin: 0 0 5px 0;
+}
+
+:is(.label, .input):last-child {
+    margin: 5px 0 0 0;
+}
+
+.input {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid var(--gray);
+    padding: 5px 8px;
+    background-color: var(--background);
+}
