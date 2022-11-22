@@ -3,8 +3,13 @@ html {
   --orange-light: #ffaa00;
   --green: #00cc00;
   --blue: #061198;
+  --gray: #828282;
+  --white: #fff;
   --background: #f8f8f8;
   --text-color: #202020;
+  --shadow-color: #4f4f4f77;
+
+  --small: 12px;
 }
 
 body {

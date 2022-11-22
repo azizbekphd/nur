@@ -1,10 +1,15 @@
 .button {
-    padding: 15px 20px;
+    padding: 0 20px;
+    height: 45px;
     margin: 8px;
     cursor: pointer;
     transition-duration: 0.25s;
     transition-timing-function: ease-out;
     display: inline-block;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button:active {
@@ -14,8 +19,8 @@
 /* TextButton */
 
 .textButton {
-    display: inline-block;
     position: relative;
+    border-radius: 0;
 }
 
 .textButton::before {
@@ -62,7 +67,6 @@
     background-clip: padding-box;
     border: solid 3px transparent;
     background-color: var(--background);
-    border-radius: 1em;
 }
 
 .highlightedButton::before {
@@ -80,9 +84,32 @@
 
 .highlightedButton:hover {
     background-color: transparent;
-    color: white;
+    color: var(--white);
 }
 
 .highlightedButton:hover::before {
     background: linear-gradient(to left, var(--orange), var(--orange-light));
+}
+
+/* FilledButton */
+
+.filledButton {
+    background-color: var(--orange);
+    border: 0;
+    color: var(--white);
+}
+
+.filledButton:hover {
+    background-color: var(--orange-light);
+}
+
+/* OutlinedButton */
+
+.outlinedButton {
+    background-color: var(--background);
+    border: 1px solid var(--gray);
+}
+
+.outlinedButton:hover {
+    background-color: var(--shadow-color);
 }
