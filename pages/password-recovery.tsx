@@ -36,7 +36,7 @@ const PasswordRecovery: NextPage = () => {
             className={styles.logo}
           />
           <h1 className={styles.title}>Password recovery</h1>
-          <p className={styles.subtitle}>Let's recover your password</p>
+          <p className={styles.subtitle}>Let&apos;s recover your password</p>
           <form>
             <Input
               label={"Email"}

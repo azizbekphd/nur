@@ -74,7 +74,7 @@ const SignIn: NextPage = () => {
               </OutlinedButton>
             </div>
             <p className={classNames([styles.hint, styles.indented])}>
-              Don't have an account? <TextLink href="/signup">Sign up</TextLink>
+              Don&apos;t have an account? <TextLink href="/signup">Sign up</TextLink>
             </p>
           </form>
         </div>

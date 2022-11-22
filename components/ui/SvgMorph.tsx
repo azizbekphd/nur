@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from "react";
-import { animated, useSpring } from "react-spring";
+import { animated, useSpring } from "@react-spring/web";
 
 type SvgMorphProps = {
   width: number;
@@ -33,7 +33,7 @@ const SvgMorph = ({
   }, [active]);
 
   useEffect(() => {
-    setActive(!active);
+    setActive(true);
   }, [])
 
   return (
