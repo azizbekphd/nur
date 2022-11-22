@@ -4,9 +4,11 @@ import { Navbar, SvgMorph } from "../components";
 import styles from "../styles/Welcome.module.css";
 import { motion } from "framer-motion";
 import { useWindowSize } from "../utils";
+import useI18n from "../i18n";
 
 const Welcome: NextPage = () => {
   const windowSize = useWindowSize();
+  const { S } = useI18n();
 
   return (
     <main className={styles.wrapper}>
@@ -59,8 +61,8 @@ const Welcome: NextPage = () => {
               duration: 2,
             }}
           >
-            All you need to start is{" "}
-            <span className={styles.gradientHighlight}>desire.</span>
+            {S.allYouNeedToStartIs}
+            <span className={styles.gradientHighlight}>{S.desire}</span>
           </motion.h1>
         </ParallaxLayer>
         <ParallaxLayer offset={0} speed={0.6}>
@@ -112,6 +114,8 @@ const Welcome: NextPage = () => {
         ></ParallaxLayer>
 
         {/* Page 2 */}
+
+        
       </Parallax>
     </main>
   );

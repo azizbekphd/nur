@@ -3,6 +3,7 @@
     text-align: center;
     width: clamp(90%, 700px, 70%);
     display: block;
+    max-height: 264px;
 }
 
 .gradientHighlight {

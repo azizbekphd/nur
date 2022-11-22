@@ -5,9 +5,11 @@ import Image from "next/image";
 import { useWindowSize } from "../utils";
 import { motion } from "framer-motion";
 import { FilledButton, Input } from "../components";
+import useI18n from "../i18n";
 
 const PasswordRecovery: NextPage = () => {
   const windowSize = useWindowSize();
+  const { S, formatString } = useI18n();
 
   return (
     <main className={styles.page}>
@@ -35,16 +37,18 @@ const PasswordRecovery: NextPage = () => {
             height={60}
             className={styles.logo}
           />
-          <h1 className={styles.title}>Password recovery</h1>
-          <p className={styles.subtitle}>Let&apos;s recover your password</p>
+          <h1 className={styles.title}>{S.passwordRecoveryTitle}</h1>
+          <p className={styles.subtitle}>{S.passwordRecoverySubtitle}</p>
           <form>
             <Input
-              label={"Email"}
+              label={S.email}
               type="email"
-              placeholder={"Enter your email"}
+              placeholder={S.emailPlaceholder}
             />
-            <FilledButton onClick={() => {}}>Send</FilledButton>
-            <p className={styles.hint}>We will send you instructions</p>
+            <div className={styles.indented}>
+              <FilledButton onClick={() => {}}>{S.send}</FilledButton>
+            </div>
+            <p className={styles.hint}>{S.weWillSendYouInstructions}</p>
           </form>
         </div>
       </motion.div>

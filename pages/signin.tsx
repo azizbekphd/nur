@@ -11,9 +11,11 @@ import {
   OutlinedButton,
   TextLink,
 } from "../components";
+import useI18n from "../i18n";
 
 const SignIn: NextPage = () => {
   const windowSize = useWindowSize();
+  const { S, formatString } = useI18n();
 
   return (
     <main className={styles.page}>
@@ -41,27 +43,29 @@ const SignIn: NextPage = () => {
             height={60}
             className={styles.logo}
           />
-          <h1 className={styles.title}>Welcome back</h1>
+          <h1 className={styles.title}>{S.signInTitle}</h1>
           <p className={styles.subtitle}>
-            Welcome back! Please, enter your details
+            {S.signInSubtitle}
           </p>
           <form>
             <Input
-              label={"Email"}
+              label={S.email}
               type="email"
-              placeholder={"Enter your email"}
+              placeholder={S.emailPlaceholder}
             />
             <Input
-              label={"Password"}
+              label={S.password}
               type="password"
-              placeholder={"Enter your password"}
+              placeholder={S.emailPlaceholder}
             />
             <div className={classNames([styles.row, styles.indented])}>
-              <Checkbox label={"Remember for 30 days"} />
-              <TextLink href={"/password-recovery"}>Forgot password</TextLink>
+              <Checkbox label={formatString(S.rememberForNDays, 30)} />
+              <TextLink href={"/password-recovery"}>
+                {S.forgotPassword}
+              </TextLink>
             </div>
             <div className={styles.indented}>
-              <FilledButton onClick={() => {}}>Sign in</FilledButton>
+              <FilledButton onClick={() => {}}>{S.signIn}</FilledButton>
               <OutlinedButton onClick={() => {}}>
                 <Image
                   src={"/images/google-g.svg"}
@@ -70,11 +74,12 @@ const SignIn: NextPage = () => {
                   alt={"Google logo"}
                   className={styles.googleLogo}
                 />
-                Sign in with Google
+                {formatString(S.signInWith, "Google")}
               </OutlinedButton>
             </div>
             <p className={classNames([styles.hint, styles.indented])}>
-              Don&apos;t have an account? <TextLink href="/signup">Sign up</TextLink>
+              {S.dontHaveAnAccount}{" "}
+              <TextLink href="/signup">{S.signUp}</TextLink>
             </p>
           </form>
         </div>

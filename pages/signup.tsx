@@ -11,9 +11,11 @@ import {
   OutlinedButton,
   TextLink,
 } from "../components";
+import useI18n from "../i18n";
 
 const SignUp: NextPage = () => {
   const windowSize = useWindowSize();
+  const { S, formatString } = useI18n();
 
   return (
     <main className={styles.page}>
@@ -41,37 +43,39 @@ const SignUp: NextPage = () => {
             height={60}
             className={styles.logo}
           />
-          <h1 className={styles.title}>Create a new account</h1>
-          <p className={styles.subtitle}>Welcome! Please, enter your details</p>
+          <h1 className={styles.title}>{S.signUpTitle}</h1>
+          <p className={styles.subtitle}>{S.signUpSubtitle}</p>
           <form>
             <Input
-              label={"Email"}
+              label={S.email}
               type="email"
-              placeholder={"Enter your email"}
+              placeholder={S.emailPlaceholder}
             />
             <div className={styles.row}>
-              <Input label={"Name"} placeholder={"John"} />
-              <Input label={"Last name"} placeholder={"Doe"} />
+              <Input label={S.name} placeholder={S.namePlaceholder} />
+              <Input label={S.lastName} placeholder={S.lastNamePlaceholder} />
             </div>
             <Input
-              label={"Password"}
+              label={S.password}
               type="password"
-              placeholder={"Enter your password"}
+              placeholder={S.passwordPlaceholder}
             />
-            <FilledButton onClick={() => {}}>Sign up</FilledButton>
-            <OutlinedButton onClick={() => {}}>
-              <Image
-                src={"/images/google-g.svg"}
-                width={24}
-                height={24}
-                alt={"Google logo"}
-                className={styles.googleLogo}
-              />
-              Sign up with Google
-            </OutlinedButton>
+            <div className={styles.indented}>
+              <FilledButton onClick={() => {}}>{S.signUp}</FilledButton>
+              <OutlinedButton onClick={() => {}}>
+                <Image
+                  src={"/images/google-g.svg"}
+                  width={24}
+                  height={24}
+                  alt={"Google logo"}
+                  className={styles.googleLogo}
+                />
+                {formatString(S.signUpWith, "Google")}
+              </OutlinedButton>
+            </div>
             <p className={styles.hint}>
-              Already have an account?{" "}
-              <TextLink href="/signin">Sign in</TextLink>
+              {S.alreadyHaveAnAccount}{" "}
+              <TextLink href="/signin">{S.signIn}</TextLink>
             </p>
           </form>
         </div>
