@@ -12,7 +12,7 @@ type NavbarProps = {
 
 const Navbar = ({ logo = true, signedIn }: NavbarProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { S } = useI18n();
+  const { S, asPath } = useI18n();
 
   return (
     <nav
@@ -39,7 +39,7 @@ const Navbar = ({ logo = true, signedIn }: NavbarProps) => {
           { title: S.teachers, href: "/teachers" },
           { title: S.aboutUs, href: "/about" },
         ].map((item: { title: string; href: string }, i) => (
-          <li key={i.toString()}>
+          <li key={i.toString()} className={classNames(asPath.startsWith(item.href) && styles.active)}>
             <TextButton href={item.href}>{item.title}</TextButton>
           </li>
         ))}

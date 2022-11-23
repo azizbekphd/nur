@@ -1,6 +1,8 @@
 import I18nStrings from "../types/I18nStrings";
 
 const en: I18nStrings = {
+    nur: "Nur",
+    title: "Nur — {0}",
     signIn: "Sign in",
     signUp: "Sign up",
     allYouNeedToStartIs: "All you need to start is ",
@@ -30,6 +32,7 @@ const en: I18nStrings = {
     courses: "Courses",
     teachers: "Teachers",
     aboutUs: "About us",
+    welcome: "Welcome",
 }
 
 export default en;

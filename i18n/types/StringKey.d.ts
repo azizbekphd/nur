@@ -1,4 +1,6 @@
 enum StringKey {
+    nur,
+    title,
     signIn,
     signUp,
     allYouNeedToStartIs,
@@ -28,6 +30,7 @@ enum StringKey {
     courses,
     teachers,
     aboutUs,
+    welcome,
 }
 
 export default StringKey;

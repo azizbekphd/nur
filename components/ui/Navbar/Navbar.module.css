@@ -85,6 +85,10 @@
     align-items: center;
 }
 
+.active {
+    color: var(--primary-color);
+}
+
 @media (max-width: 768px) {
 
     .content {

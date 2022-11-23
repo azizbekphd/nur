@@ -1,6 +1,8 @@
 import I18nStrings from "../types/I18nStrings";
 
 const ru: I18nStrings = {
+    nur: "Nur",
+    title: "Nur — {0}",
     signIn: "Войти",
     signUp: "Регистрация",
     allYouNeedToStartIs: "Все, что вам нужно — ",
@@ -29,7 +31,8 @@ const ru: I18nStrings = {
     weWillSendYouInstructions: "Мы отправим инструкции на почту",
     courses: "Курсы",
     teachers: "Учителя",
-    aboutUs: "О нас"
+    aboutUs: "О нас",
+    welcome: "Добро пожаловать"
 }
 
 export default ru;
