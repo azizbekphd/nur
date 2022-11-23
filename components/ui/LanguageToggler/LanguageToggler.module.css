@@ -58,3 +58,7 @@
     display: block;
     padding: 5px;
 }
+
+.active {
+    color: var(--primary-color);
+}

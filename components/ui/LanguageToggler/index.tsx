@@ -27,7 +27,7 @@ const LanguageToggler = ({ size = 19 }: LanguageTogglerProps) => {
       <ul className={styles.list}>
         {i18n?.locales.map((l) => (
           <li key={l}>
-            <Link href={asPath} locale={l} className={classNames(l === locale)}>
+            <Link href={asPath} locale={l} className={classNames(l === locale && styles.active)}>
               {l}
             </Link>
           </li>
