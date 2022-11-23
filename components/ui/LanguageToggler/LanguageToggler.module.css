@@ -38,6 +38,20 @@
 .wrapper:is(:hover, :focus) > .list {
     opacity: 1;
     height: min-content;
+    overflow: visible;
+}
+
+.wrapper:is(:hover, :focus):before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(30px) scaleY(2);
+    filter: blur(5px);
+    background: linear-gradient(var(--orange), var(--orange-light));
+    z-index: -1;
 }
 
 .list a {
