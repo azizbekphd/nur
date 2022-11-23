@@ -9,7 +9,9 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 10px min(10%, 30px);
+    --h-padding: min(10%, 30px);
+    --v-padding: 10px;
+    padding: var(--v-padding) var(--h-padding);
     transition-duration: 0.5s;
     transition-property: background-color;
 }
@@ -123,6 +125,12 @@
 
     .toggler {
         display: block;
+    }
+
+    .buttons {
+        position: absolute;
+        right: var(--h-padding);
+        top: var(--v-padding);
     }
 
 }

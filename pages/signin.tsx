@@ -58,7 +58,7 @@ const SignIn: NextPage = () => {
               type="password"
               placeholder={S.emailPlaceholder}
             />
-            <div className={classNames([styles.row, styles.indented])}>
+            <div className={classNames(styles.row, styles.indented)}>
               <Checkbox label={formatString(S.rememberForNDays, 30)} />
               <TextLink href={"/password-recovery"}>
                 {S.forgotPassword}
@@ -77,7 +77,7 @@ const SignIn: NextPage = () => {
                 {formatString(S.signInWith, "Google")}
               </OutlinedButton>
             </div>
-            <p className={classNames([styles.hint, styles.indented])}>
+            <p className={classNames(styles.hint, styles.indented)}>
               {S.dontHaveAnAccount}{" "}
               <TextLink href="/signup">{S.signUp}</TextLink>
             </p>

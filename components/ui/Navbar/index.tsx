@@ -16,7 +16,7 @@ const Navbar = ({ logo = true, signedIn }: NavbarProps) => {
 
   return (
     <nav
-      className={classNames([styles.wrapper, open && styles.open])}
+      className={classNames(styles.wrapper, open && styles.open)}
       onClick={() => {
         setOpen(false);
       }}
@@ -32,22 +32,6 @@ const Navbar = ({ logo = true, signedIn }: NavbarProps) => {
       ) : (
         <></>
       )}
-
-      <div className={styles.buttons}>
-        <button
-          className={styles.toggler}
-          onClick={(e) => {
-            e.stopPropagation();
-            setOpen(!open);
-          }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        {/* <LanguageToggler size={19} /> */}
-      </div>
 
       <ul className={styles.content}>
         {[
@@ -69,6 +53,22 @@ const Navbar = ({ logo = true, signedIn }: NavbarProps) => {
           </li>
         )}
       </ul>
+      
+      <div className={styles.buttons}>
+        <button
+          className={styles.toggler}
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpen(!open);
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <LanguageToggler size={19} />
+      </div>
     </nav>
   );
 };
