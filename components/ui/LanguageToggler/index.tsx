@@ -6,10 +6,10 @@ import { classNames } from "../../../utils";
 import useI18n from "../../../i18n";
 
 type LanguageTogglerProps = {
-  size: number;
+  size?: number;
 };
 
-const LanguageToggler = ({ size }: LanguageTogglerProps) => {
+const LanguageToggler = ({ size = 19 }: LanguageTogglerProps) => {
   const { locale, asPath } = useI18n();
 
   return (

@@ -8,6 +8,7 @@ import {
   Checkbox,
   FilledButton,
   Input,
+  LanguageToggler,
   OutlinedButton,
   TextLink,
 } from "../components";
@@ -36,6 +37,9 @@ const SignIn: NextPage = () => {
         }}
       >
         <div className={styles.content}>
+          <div className={styles.languageTogglerWrapper}>
+            <LanguageToggler />
+          </div>
           <Image
             src={"/logo.png"}
             alt={"Logo"}

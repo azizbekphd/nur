@@ -4,7 +4,7 @@ import bg from "../public/images/library.jpg";
 import Image from "next/image";
 import { useWindowSize } from "../utils";
 import { motion } from "framer-motion";
-import { FilledButton, Input } from "../components";
+import { FilledButton, Input, LanguageToggler } from "../components";
 import useI18n from "../i18n";
 
 const PasswordRecovery: NextPage = () => {
@@ -30,6 +30,9 @@ const PasswordRecovery: NextPage = () => {
         }}
       >
         <div className={styles.content}>
+          <div className={styles.languageTogglerWrapper}>
+            <LanguageToggler />
+          </div>
           <Image
             src={"/logo.png"}
             alt={"Logo"}
