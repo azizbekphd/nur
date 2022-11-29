@@ -4,14 +4,15 @@ import { HighlightedButton, LanguageToggler, TextButton } from "..";
 import useI18n from "../../../i18n";
 import { classNames } from "../../../utils";
 import styles from "./Navbar.module.css";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 type NavbarProps = {
   logo?: boolean;
-  signedIn?: boolean;
 };
 
-const Navbar = ({ logo = true, signedIn }: NavbarProps) => {
+const Navbar = ({ logo = true, }: NavbarProps) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { data: session } = useSession();
   const { S, asPath } = useI18n();
 
   return (
@@ -44,8 +45,8 @@ const Navbar = ({ logo = true, signedIn }: NavbarProps) => {
           </li>
         ))}
         <li className={styles.space}></li>
-        {signedIn ? (
-          <></>
+        {session ? (
+          <button onClick={()=>{signOut()}}></button>
         ) : (
           <li className={styles.trailing}>
             <HighlightedButton href="/signin">{S.signIn}</HighlightedButton>

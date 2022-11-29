@@ -14,10 +14,18 @@ import {
 } from "../components";
 import useI18n from "../i18n";
 import Head from "next/head";
+import { signIn } from "next-auth/react";
+import { FormEvent, useState } from "react";
 
 const SignIn: NextPage = () => {
   const windowSize = useWindowSize();
   const { S, formatString } = useI18n();
+
+  const [data, setData] = useState<{
+    email?: string;
+    password?: string;
+    remember?: boolean;
+  }>();
 
   return (
     <>
@@ -59,21 +67,54 @@ const SignIn: NextPage = () => {
                 label={S.email}
                 type="email"
                 placeholder={S.emailPlaceholder}
+                value={data?.email}
+                onChange={(e: FormEvent<HTMLInputElement>) => {
+                  setData({
+                    ...data,
+                    email: e.currentTarget.value,
+                  });
+                }}
               />
               <Input
                 label={S.password}
                 type="password"
                 placeholder={S.emailPlaceholder}
+                value={data?.password}
+                onChange={(e: FormEvent<HTMLInputElement>) => {
+                  setData({
+                    ...data,
+                    password: e.currentTarget.value,
+                  });
+                }}
               />
               <div className={classNames(styles.row, styles.indented)}>
-                <Checkbox label={formatString(S.rememberForNDays, 30)} />
+                <Checkbox
+                  label={formatString(S.rememberForNDays, 30)}
+                  checked={data?.remember}
+                  onChange={(e: FormEvent<HTMLInputElement>) => {
+                    setData({
+                      ...data,
+                      remember: e.currentTarget.checked,
+                    });
+                  }}
+                />
                 <TextLink href={"/password-recovery"}>
                   {S.forgotPassword}
                 </TextLink>
               </div>
               <div className={styles.indented}>
-                <FilledButton onClick={() => {}}>{S.signIn}</FilledButton>
-                <OutlinedButton onClick={() => {}}>
+                <FilledButton
+                  onClick={() => {
+                    signIn("email", data);
+                  }}
+                >
+                  {S.signIn}
+                </FilledButton>
+                <OutlinedButton
+                  onClick={() => {
+                    signIn("google");
+                  }}
+                >
                   <Image
                     src={"/images/google-g.svg"}
                     width={24}
