@@ -1,0 +1,74 @@
+.wrapper {
+  position: relative;
+}
+
+.wrapper, .wrapper * {
+  transition-duration: 0.2s;
+  transition-property: opacity;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+
+}
+
+.buttonWrapper > * {
+  margin: auto 5px;
+}
+
+.name span {
+  display: inline-block;
+}
+
+.name span::first-letter {
+  color: var(--orange);
+}
+
+.profileImage {
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.menuItems {
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .menuItems {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    height: 0;
+    background-color: var(--background);
+    transition-duration: 0;
+  }
+
+  .wrapper:is(:focus, :hover) > * {
+    background-color: var(--background);
+    overflow: visible;
+    opacity: 1;
+    height: min-content;
+  }
+
+  :is(.wrapper:is(:focus, :hover))::before {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(5px);
+    transform-origin: top center;
+    height: 105px;
+    background: linear-gradient(var(--orange), var(--orange-light));
+  }
+}

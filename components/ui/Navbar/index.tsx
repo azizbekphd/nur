@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-import { HighlightedButton, LanguageToggler, TextButton } from "..";
+import { HighlightedButton, LanguageToggler, TextButton, ProfileMenu } from "..";
 import useI18n from "../../../i18n";
 import { classNames } from "../../../utils";
 import styles from "./Navbar.module.css";
@@ -23,13 +24,15 @@ const Navbar = ({ logo = true, }: NavbarProps) => {
       }}
     >
       {logo ? (
-        <Image
-          src={"/logo.png"}
-          alt="Nur"
-          width={100}
-          height={50}
-          className={styles.logo}
-        />
+        <Link href="/">
+          <Image
+            src={"/logo.png"}
+            alt="Nur"
+            width={100}
+            height={50}
+            className={styles.logo}
+          />
+        </Link>
       ) : (
         <></>
       )}
@@ -45,14 +48,16 @@ const Navbar = ({ logo = true, }: NavbarProps) => {
           </li>
         ))}
         <li className={styles.space}></li>
+        <li className={styles.trailing}>
         {session ? (
-          <button onClick={()=>{signOut()}}></button>
+          <ProfileMenu />
         ) : (
-          <li className={styles.trailing}>
+          <>
             <HighlightedButton href="/signin">{S.signIn}</HighlightedButton>
             <TextButton href="/signup">{S.signUp}</TextButton>
-          </li>
+          </>
         )}
+        </li>
       </ul>
       
       <div className={styles.buttons}>

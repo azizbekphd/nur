@@ -5,3 +5,4 @@ export { default as Input } from "./Input";
 export { default as Checkbox } from "./Checkbox";
 export { default as TextLink } from "./TextLink";
 export { default as LanguageToggler } from "./LanguageToggler";
+export { default as ProfileMenu } from "./ProfileMenu";

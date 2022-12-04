@@ -78,6 +78,7 @@
     flex-direction: row;
     justify-content: flex-end;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .buttons {
@@ -106,6 +107,7 @@
 
     .content>* {
         margin: 0 auto;
+        min-width: fit-content;
         width: 50%;
     }
 

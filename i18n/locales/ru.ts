@@ -32,7 +32,8 @@ const ru: I18nStrings = {
     courses: "Курсы",
     teachers: "Учителя",
     aboutUs: "О нас",
-    welcome: "Добро пожаловать"
+    welcome: "Добро пожаловать",
+    signOut: "Выйти",
 }
 
 export default ru;

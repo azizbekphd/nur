@@ -18,7 +18,7 @@ const ButtonBase = (props: ButtonBaseProps) => {
     <button className={className} onClick={(e) => {
         e.stopPropagation();
         props.onClick!()
-      }}>
+      }} type={"button"}>
       {props.children}
     </button>
   );

@@ -114,3 +114,13 @@
 .outlinedButton:hover {
     background-color: var(--shadow-color);
 }
+
+/* CleanButton */
+
+.cleanButton {
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  width: 100%;
+  margin: 0;
+}

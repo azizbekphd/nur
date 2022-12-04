@@ -16,6 +16,7 @@ import useI18n from "../i18n";
 import Head from "next/head";
 import { signIn } from "next-auth/react";
 import { FormEvent, useState } from "react";
+import { a } from "@react-spring/web";
 
 const SignIn: NextPage = () => {
   const windowSize = useWindowSize();
@@ -78,7 +79,7 @@ const SignIn: NextPage = () => {
               <Input
                 label={S.password}
                 type="password"
-                placeholder={S.emailPlaceholder}
+                placeholder={S.passwordPlaceholder}
                 value={data?.password}
                 onChange={(e: FormEvent<HTMLInputElement>) => {
                   setData({
@@ -105,7 +106,7 @@ const SignIn: NextPage = () => {
               <div className={styles.indented}>
                 <FilledButton
                   onClick={() => {
-                    signIn("email", data);
+                    signIn("credentials", data);
                   }}
                 >
                   {S.signIn}

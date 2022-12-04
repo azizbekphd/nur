@@ -33,6 +33,7 @@ const en: I18nStrings = {
     teachers: "Teachers",
     aboutUs: "About us",
     welcome: "Welcome",
+    signOut: "Sign out",
 }
 
 export default en;

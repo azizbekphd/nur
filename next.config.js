@@ -3,8 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ["en", "ru"],
+    locales: ["en", "ru", "uz"],
     defaultLocale: "en"
+  },
+  images: {
+    domains: [
+      "lh3.googleusercontent.com",
+    ],
   }
 }
 

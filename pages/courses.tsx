@@ -12,8 +12,9 @@ const Courses: NextPage = () => {
       <Head>
         <title>{formatString(S.title, S.courses)}</title>
       </Head>
+      <Navbar />
       <main>
-        <Navbar />
+        
       </main>
     </>
   );

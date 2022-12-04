@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { ReactNode, MouseEvent } from "react";
 
 type ButtonProps = {
     children: ReactNode;
-} & ({onClick: () => void; href?: never} | {href: string; onClick?: never});
+} & ({onClick: (e?: MouseEvent<HTMLElement>) => void; href?: never} | {href: string; onClick?: never});
 
 export default ButtonProps;

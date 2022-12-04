@@ -31,6 +31,7 @@ enum StringKey {
     teachers,
     aboutUs,
     welcome,
+    signOut,
 }
 
 export default StringKey;
