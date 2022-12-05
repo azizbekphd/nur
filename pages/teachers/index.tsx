@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { Body, Grid, Navbar } from "../../components";
 import { TeacherItem } from "../../components/Teachers";

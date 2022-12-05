@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 
-const CoursePayloadData: Prisma.CourseArgs = {
+const CoursePayloadData = {
   include: {
     name: {
       include: {

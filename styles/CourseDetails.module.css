@@ -1,0 +1,15 @@
+.wrapper {
+    width: min(90%, 50rem);
+    margin: 20px auto 0;
+    position: relative;
+}
+
+.image {
+    width: min(90vw, 600px);
+    height: min(90vw, 400px);
+    border-radius: 8px;
+    margin: 0 auto;
+    float: none;
+    position: relative;
+    display: block;
+}

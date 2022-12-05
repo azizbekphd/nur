@@ -1,23 +1,53 @@
-import type { NextPage } from "next";
+import { PrismaClient } from "@prisma/client";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { Navbar } from "../../components";
+import Link from "next/link";
+import { Body, Grid, Navbar } from "../../components";
+import { CourseItem } from "../../components/Courses";
 import useI18n from "../../i18n";
-import styles from "../styles/Courses.module.css";
+import { CourseModel, CoursePayloadData } from "../../models";
+import styles from "../../styles/Courses.module.css";
 
-const Courses: NextPage = () => {
-    const { S, formatString } = useI18n();
+type CoursesProps = {
+  courses: CourseModel[] | null | undefined;
+};
+
+const Courses: NextPage<CoursesProps> = ({ courses }: CoursesProps) => {
+  const { S, formatString } = useI18n();
   return (
     <>
       <Head>
         <title>{formatString(S.title, S.courses)}</title>
       </Head>
-      <Navbar />
       <main>
-        
+        <Navbar />
+        <Body>
+          <Grid>
+            {courses?.map((course) => (
+              <Link
+                key={course.id}
+                href={`/courses/${course.id}`}
+                className={styles.courseItem}
+              >
+                <CourseItem course={course} />
+              </Link>
+            ))}
+          </Grid>
+        </Body>
       </main>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps<CoursesProps> = async (
+  context
+) => {
+  const prisma = new PrismaClient();
+  return {
+    props: {
+      courses: await prisma.course.findMany(CoursePayloadData),
+    },
+  };
 };
 
 export default Courses;
