@@ -1,4 +1,5 @@
 import { Prisma } from "@prisma/client";
+import { TeacherPayloadData } from "./Teacher";
 
 const CoursePayloadData = {
   include: {
@@ -12,10 +13,11 @@ const CoursePayloadData = {
         value: true,
       },
     },
+    teachers: TeacherPayloadData,
   },
 };
 
-type Teacher = Prisma.CourseGetPayload<typeof CoursePayloadData>;
+type Course = Prisma.CourseGetPayload<typeof CoursePayloadData>;
 
 export { CoursePayloadData };
-export default Teacher;
+export default Course;

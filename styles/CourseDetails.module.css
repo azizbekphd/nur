@@ -6,10 +6,19 @@
 
 .image {
     width: min(90vw, 600px);
-    height: min(90vw, 400px);
+    height: min(60vw, 400px);
     border-radius: 8px;
     margin: 0 auto;
     float: none;
     position: relative;
     display: block;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding: 20px;
 }

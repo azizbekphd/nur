@@ -7,6 +7,7 @@ import useI18n from "../../i18n";
 import { TeacherModel, TeacherPayloadData } from "../../models";
 import fromLocaleString from "../../utils/fromLocaleString";
 import styles from "../../styles/TeacherDetails.module.css";
+import config from "../../next.config";
 
 type TeacherDetailsProps = {
   teacher: TeacherModel;
@@ -24,7 +25,7 @@ const TeacherDetails: NextPage<TeacherDetailsProps> = ({ teacher }) => {
       <Body>
         <div className={styles.wrapper}>
           <Image
-            src={teacher.image}
+            src={teacher.image ?? "/images/staff/placeholder.jpg"}
             alt={fromLocaleString(teacher.name.value, locale)}
             width={400}
             height={400}
@@ -50,8 +51,6 @@ export const getStaticProps: GetStaticProps<
   TeacherDetailsUrlQuery
 > = async (ctx) => {
   const prisma = new PrismaClient();
-
-  console.log(ctx.params);
 
   const teacher = await prisma.teacher.findUnique({
     where: { id: ctx.params?.id },
@@ -81,13 +80,16 @@ export const getStaticPaths: GetStaticPaths<TeacherDetailsUrlQuery> = async (
   const teachers = await prisma.teacher.findMany();
 
   return {
-    paths: teachers.map((teacher) => {
-      return {
-        params: {
-          id: teacher.id,
-        } as TeacherDetailsUrlQuery,
-      };
-    }),
+    paths: teachers.map((teacher) =>
+      config.i18n!.locales.map((locale) => {
+        return {
+          params: {
+            id: teacher.id,
+          } as TeacherDetailsUrlQuery,
+          locale: locale,
+        };
+      })
+    ).flat(),
     fallback: false,
   };
 };

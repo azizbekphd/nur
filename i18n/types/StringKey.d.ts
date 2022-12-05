@@ -32,6 +32,7 @@ enum StringKey {
     aboutUs,
     welcome,
     signOut,
+    join,
 }
 
 export default StringKey;

@@ -1,11 +1,11 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Only needed when using a cloud provider that doesn't support the creation of new databases, like Heroku. Learn more: https://pris.ly/migrate-shadow
-}
-
-generator client {
-  provider = "prisma-client-js"
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Account {
@@ -14,15 +14,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -35,21 +34,15 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-enum Role {
-  USER
-  TEACHER
-  ADMIN
-}
-
 model User {
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  role          Role      @default(USER)
   accounts      Account[]
   sessions      Session[]
-  role          Role      @default(USER)
 }
 
 model VerificationToken {
@@ -61,75 +54,81 @@ model VerificationToken {
 }
 
 model LocaleString {
-  id                Int          @id @default(autoincrement())
+  id                Int                @id @default(autoincrement())
   en                String
   ru                String
   uz                String
-  teacherName       TeacherName?
-  teacherBio        TeacherBio?
-  teacherRole       TeacherRole?
-  courseName        CourseName?
   courseDescription CourseDescription?
+  courseName        CourseName?
+  teacherBio        TeacherBio?
+  teacherName       TeacherName?
+  teacherRole       TeacherRole?
 }
 
 model TeacherName {
   id        Int          @id @default(autoincrement())
-  value     LocaleString @relation(fields: [valueId], references: [id])
   valueId   Int          @unique
-  teacher   Teacher?
   teacherId String
+  value     LocaleString @relation(fields: [valueId], references: [id])
+  teacher   Teacher?
 }
 
 model TeacherRole {
   id        Int          @id @default(autoincrement())
-  value     LocaleString @relation(fields: [valueId], references: [id])
   valueId   Int          @unique
-  teacher   Teacher?
   teacherId String
+  value     LocaleString @relation(fields: [valueId], references: [id])
+  teacher   Teacher?
 }
 
 model TeacherBio {
   id        Int          @id @default(autoincrement())
-  value     LocaleString @relation(fields: [valueId], references: [id])
   valueId   Int          @unique
-  teacher   Teacher?
   teacherId String
+  value     LocaleString @relation(fields: [valueId], references: [id])
+  teacher   Teacher?
 }
 
 model Teacher {
   id      String      @id @default(cuid())
-  name    TeacherName @relation(fields: [nameId], references: [id], map: "teacherName_fk")
   nameId  Int         @unique
-  role    TeacherRole @relation(fields: [roleId], references: [id], map: "teacherRole_fk")
   roleId  Int         @unique
-  bio     TeacherBio  @relation(fields: [bioId], references: [id], map: "teacherBio_fk")
   bioId   Int         @unique
-  image   String
+  image   String?
+  bio     TeacherBio  @relation(fields: [bioId], references: [id], map: "teacherBio_fk")
+  name    TeacherName @relation(fields: [nameId], references: [id], map: "teacherName_fk")
+  role    TeacherRole @relation(fields: [roleId], references: [id], map: "teacherRole_fk")
   courses Course[]
 }
 
 model CourseName {
   id       Int          @id @default(autoincrement())
-  value    LocaleString @relation(fields: [valueId], references: [id])
   valueId  Int          @unique
-  course   Course?
   courseId String
+  value    LocaleString @relation(fields: [valueId], references: [id])
+  course   Course?
 }
 
 model CourseDescription {
   id       Int          @id @default(autoincrement())
-  value    LocaleString @relation(fields: [valueId], references: [id])
   valueId  Int          @unique
-  course   Course?
   courseId String
+  value    LocaleString @relation(fields: [valueId], references: [id])
+  course   Course?
 }
 
 model Course {
   id            String            @id @default(cuid())
-  name          CourseName        @relation(fields: [nameId], references: [id], map: "courseName_fk")
-  nameId        Int               @unique
-  description   CourseDescription @relation(fields: [nameId], references: [id], map: "courseDescription_fk")
-  descriptionId Int               @unique
   image         String?
+  nameId        Int               @unique
+  descriptionId Int               @unique
+  description   CourseDescription @relation(fields: [descriptionId], references: [id], map: "courseDescription_fk")
+  name          CourseName        @relation(fields: [nameId], references: [id], map: "courseName_fk")
   teachers      Teacher[]
+}
+
+enum Role {
+  USER
+  TEACHER
+  ADMIN
 }

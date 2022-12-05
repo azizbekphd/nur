@@ -16,7 +16,7 @@ const TeacherItem = ({ teacher }: TeacherItemProps) => {
   return (
     <div className={styles.wrapper}>
       <Image
-        src={teacher.image}
+        src={teacher.image ?? "/images/staff/placeholder.jpg"}
         alt={fromLocaleString(teacher.name.value, locale)}
         width={200}
         height={200}

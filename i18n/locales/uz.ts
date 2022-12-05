@@ -34,6 +34,7 @@ const uz: I18nStrings = {
     aboutUs: "Biz haqimizda",
     welcome: "Xush kelibsiz",
     signOut: "Chiqish",
+    join: "Yozilish",
 }
 
 export default uz;

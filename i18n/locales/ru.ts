@@ -34,6 +34,7 @@ const ru: I18nStrings = {
     aboutUs: "О нас",
     welcome: "Добро пожаловать",
     signOut: "Выйти",
+    join: "Записаться",
 }
 
 export default ru;

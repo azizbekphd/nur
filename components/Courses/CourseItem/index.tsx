@@ -14,7 +14,7 @@ const CourseItem = ({ course }: CourseItemProps) => {
   return (
     <div className={styles.wrapper}>
       <Image
-        src={course.image!}
+        src={course.image ?? "/images/courses/placeholder.jpg"}
         alt={fromLocaleString(course.name.value, locale)}
         width={300}
         height={200}
