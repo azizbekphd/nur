@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { Body, Grid, Navbar } from "../../components";
 import { TeacherItem } from "../../components/Teachers";
 import useI18n from "../../i18n";
@@ -24,7 +25,13 @@ const Teachers: NextPage<TeachersProps> = ({ teachers }: TeachersProps) => {
         <Body>
           <Grid>
             {teachers?.map((teacher) => (
-              <TeacherItem key={teacher.id} teacher={teacher} />
+              <Link
+                key={teacher.id}
+                href={`/teachers/${teacher.id}`}
+                className={styles.teacherItem}
+              >
+                <TeacherItem teacher={teacher} />
+              </Link>
             ))}
           </Grid>
         </Body>

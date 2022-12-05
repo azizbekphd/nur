@@ -1,0 +1,22 @@
+.wrapper {
+    width: min(90%, 50rem);
+    margin: 20px auto 0;
+    position: relative;
+}
+
+.image {
+    margin: 0 0 20px 20px;
+    float: right;
+    width: min(90vw, 400px);
+    height: min(90vw, 400px);
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .image {
+        margin: 0 auto;
+        float: none;
+        position: relative;
+        display: block;
+    }
+}

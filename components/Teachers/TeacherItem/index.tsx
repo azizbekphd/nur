@@ -22,9 +22,9 @@ const TeacherItem = ({ teacher }: TeacherItemProps) => {
         height={200}
         className={styles.image}
       />
-      <h3 className={styles.name}>{fromLocaleString(teacher.name.value, locale)}</h3>
+      <h3 className={styles.name}>{fromLocaleString(teacher?.name.value, locale)}</h3>
       <hr className={styles.divider} />
-      <p className={styles.role}>{fromLocaleString(teacher.role.value, locale)}</p>
+      <p className={styles.role}>{fromLocaleString(teacher?.role.value, locale)}</p>
     </div>
   );
 };
