@@ -1,10 +1,12 @@
 import { PrismaClient } from "@prisma/client";
+import { motion } from "framer-motion";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { Body, Grid, Navbar } from "../../components";
 import { TeacherItem } from "../../components/Teachers";
 import useI18n from "../../i18n";
+import MotionVariants from "../../lib/MotionVariants";
 import { TeacherModel, TeacherPayloadData } from "../../models";
 import styles from "../../styles/Teachers.module.css";
 
@@ -14,6 +16,8 @@ type TeachersProps = {
 
 const Teachers: NextPage<TeachersProps> = ({ teachers }: TeachersProps) => {
   const { S, formatString } = useI18n();
+  const MotionLink = motion(Link);
+
   return (
     <>
       <Head>
@@ -24,13 +28,14 @@ const Teachers: NextPage<TeachersProps> = ({ teachers }: TeachersProps) => {
         <Body>
           <Grid>
             {teachers?.map((teacher) => (
-              <Link
+              <MotionLink
                 key={teacher.id}
+                variants={MotionVariants.gridItem}
                 href={`/teachers/${teacher.id}`}
                 className={styles.teacherItem}
               >
                 <TeacherItem teacher={teacher} />
-              </Link>
+              </MotionLink>
             ))}
           </Grid>
         </Body>
