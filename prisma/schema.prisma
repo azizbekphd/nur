@@ -61,13 +61,15 @@ model VerificationToken {
 }
 
 model LocaleString {
-  id          Int          @id @default(autoincrement())
-  en          String
-  ru          String
-  uz          String
-  teacherName TeacherName?
-  teacherBio  TeacherBio?
-  teacherRole TeacherRole?
+  id                Int          @id @default(autoincrement())
+  en                String
+  ru                String
+  uz                String
+  teacherName       TeacherName?
+  teacherBio        TeacherBio?
+  teacherRole       TeacherRole?
+  courseName        CourseName?
+  courseDescription CourseDescription?
 }
 
 model TeacherName {
@@ -106,10 +108,28 @@ model Teacher {
   courses Course[]
 }
 
+model CourseName {
+  id       Int          @id @default(autoincrement())
+  value    LocaleString @relation(fields: [valueId], references: [id])
+  valueId  Int          @unique
+  course   Course?
+  courseId String
+}
+
+model CourseDescription {
+  id       Int          @id @default(autoincrement())
+  value    LocaleString @relation(fields: [valueId], references: [id])
+  valueId  Int          @unique
+  course   Course?
+  courseId String
+}
+
 model Course {
-  id          String    @id @default(cuid())
-  name        String
-  description String
-  image       String?
-  teachers    Teacher[]
+  id            String            @id @default(cuid())
+  name          CourseName        @relation(fields: [nameId], references: [id], map: "courseName_fk")
+  nameId        Int               @unique
+  description   CourseDescription @relation(fields: [nameId], references: [id], map: "courseDescription_fk")
+  descriptionId Int               @unique
+  image         String?
+  teachers      Teacher[]
 }
