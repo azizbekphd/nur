@@ -1,0 +1,9 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: min(90%, 60rem);
+    margin: 0 auto;
+}
