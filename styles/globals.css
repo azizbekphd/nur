@@ -9,7 +9,7 @@ html {
   --background: #f8f8f8;
   --text-color: #202020;
   --shadow-color: #4f4f4f77;
-  --translucent: #ffffff77;
+  --translucent: #ffffff99;
   --primary-color: var(--orange);
 
   --small: 12px;
@@ -40,7 +40,7 @@ a {
     color-scheme: dark;
     --text-color: #f8f8f8;
     --background: #202020;
-    --translucent: #4f4f4f77;
+    --translucent: #4f4f4f99;
     --shadow-color: #ffffff77;
     --primary-color: var(--orange-light);
   }

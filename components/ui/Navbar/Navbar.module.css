@@ -1,6 +1,6 @@
 .wrapper {
     top: 0;
-    position: sticky;
+    position: absolute;
     z-index: 1000;
     width: 100%;
     backdrop-filter: grayscale(1) blur(15px);
@@ -136,4 +136,8 @@
         top: var(--v-padding);
     }
 
+}
+
+.body {
+    padding-top: 75px;
 }

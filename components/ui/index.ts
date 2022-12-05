@@ -1,5 +1,6 @@
 export { default as SvgMorph } from "./SvgMorph";
 export { default as Navbar } from "./Navbar";
+export { default as Body } from "./Navbar/Body";
 export * from "./buttons";
 export { default as Input } from "./Input";
 export { default as Checkbox } from "./Checkbox";

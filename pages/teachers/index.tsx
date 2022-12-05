@@ -2,11 +2,11 @@ import { PrismaClient } from "@prisma/client";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { Grid, Navbar } from "../components";
-import { TeacherItem } from "../components/Teachers";
-import useI18n from "../i18n";
-import { TeacherModel, TeacherPayloadData } from "../models";
-import styles from "../styles/Teachers.module.css";
+import { Body, Grid, Navbar } from "../../components";
+import { TeacherItem } from "../../components/Teachers";
+import useI18n from "../../i18n";
+import { TeacherModel, TeacherPayloadData } from "../../models";
+import styles from "../../styles/Teachers.module.css";
 
 type TeachersProps = {
   teachers: TeacherModel[] | null | undefined;
@@ -19,13 +19,15 @@ const Teachers: NextPage<TeachersProps> = ({ teachers }: TeachersProps) => {
       <Head>
         <title>{formatString(S.title, S.teachers)}</title>
       </Head>
-      <Navbar />
       <main>
-        <Grid>
-          {teachers?.map((teacher) => (
-            <TeacherItem key={teacher.id} teacher={teacher} />
-          ))}
-        </Grid>
+        <Navbar />
+        <Body>
+          <Grid>
+            {teachers?.map((teacher) => (
+              <TeacherItem key={teacher.id} teacher={teacher} />
+            ))}
+          </Grid>
+        </Body>
       </main>
     </>
   );
