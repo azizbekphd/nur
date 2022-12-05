@@ -21,7 +21,7 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
   return (
     <>
       <Head>
-        <title>{formatString(S.title, course?.name)}</title>
+        <title>{formatString(S.title, fromLocaleString(course?.name.value, locale))}</title>
       </Head>
       <Navbar />
       <Body>

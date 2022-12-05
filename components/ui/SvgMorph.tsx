@@ -27,7 +27,7 @@ const SvgMorph = ({
   useEffect(() => {
     const id = setTimeout(() => {
       setActive(!active);
-    }, 2000);
+    }, duration);
 
     return () => clearTimeout(id);
   }, [active]);

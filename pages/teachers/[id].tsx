@@ -19,7 +19,7 @@ const TeacherDetails: NextPage<TeacherDetailsProps> = ({ teacher }) => {
   return (
     <>
       <Head>
-        <title>{formatString(S.title, teacher?.name)}</title>
+        <title>{formatString(S.title, fromLocaleString(teacher?.name.value, locale))}</title>
       </Head>
       <Navbar />
       <Body>
