@@ -25,7 +25,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--shadow-color) 0px 7px 29px 0px;
+    box-shadow: var(--translucent) 0px 7px 29px 0px;
     padding: 5% 10%;
     position: relative;
 }

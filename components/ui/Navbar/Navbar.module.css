@@ -14,7 +14,7 @@
     padding: var(--v-padding) var(--h-padding);
     transition-duration: 0.5s;
     transition-property: background-color;
-    background-color: var(--shadow-color);
+    background-color: var(--translucent);
 }
 
 .logo {

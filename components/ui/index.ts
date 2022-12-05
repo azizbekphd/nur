@@ -7,3 +7,4 @@ export { default as TextLink } from "./TextLink";
 export { default as LanguageToggler } from "./LanguageToggler";
 export { default as ProfileMenu } from "./ProfileMenu";
 export { default as PromiseView } from "./PromiseView";
+export { default as Grid } from "./Grid";

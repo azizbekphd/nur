@@ -112,7 +112,7 @@
 }
 
 .outlinedButton:hover {
-    background-color: var(--shadow-color);
+    background-color: var(--translucent);
 }
 
 /* CleanButton */

@@ -22,7 +22,7 @@ const Teachers: NextPage<TeachersProps> = ({teachers}: TeachersProps) => {
       <Navbar />
       <main>
         {
-          teachers?.map((teacher) => <TeacherItem teacher={teacher} />)
+          teachers?.map((teacher) => <TeacherItem key={teacher.id} teacher={teacher} />)
         }
       </main>
     </>
