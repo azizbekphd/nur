@@ -88,7 +88,7 @@ const SignIn: NextPage = () => {
                 )}
               >
                 {status?.error
-                  ? getLocalizedError(status.error.name, locale)
+                  ? getLocalizedError(status.error.name, locale).message
                   : S.loading}
               </p>
             ) : (

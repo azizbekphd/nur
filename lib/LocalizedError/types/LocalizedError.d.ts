@@ -1,7 +1,7 @@
-import ErrorName from "./ErrorName";
-
 type LocalizedError = {
   locale: string;
-  name: ErrorName;
+  name: string;
   message: string;
 };
+
+export default LocalizedError;
