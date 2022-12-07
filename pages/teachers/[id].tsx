@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Body, Navbar } from "../../components";
 import useI18n from "../../i18n";
 import { TeacherModel, TeacherPayloadData } from "../../models";
-import fromLocaleString from "../../utils/fromLocaleString";
+import { fromLocaleString } from "../../utils";
 import styles from "../../styles/TeacherDetails.module.css";
 import config from "../../next.config";
 

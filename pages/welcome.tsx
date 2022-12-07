@@ -3,7 +3,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Navbar, SvgMorph } from "../components";
 import styles from "../styles/Welcome.module.css";
 import { motion } from "framer-motion";
-import { useWindowSize } from "../utils";
+import { useWindowSize } from "../hooks";
 import useI18n from "../i18n";
 import Head from "next/head";
 

@@ -3,11 +3,20 @@ import "../styles/text-styles.css";
 import "../styles/fonts.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { SessionProvider, getSession } from "next-auth/react";
+import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
+import { useState } from "react";
 
-function MyApp({ Component, pageProps: {session, ...pageProps} }: AppProps) {
+function MyApp({
+  Component,
+  pageProps,
+}: AppProps<{
+  initialSession: Session;
+}>) {
+  const [supabase] = useState(() => createBrowserSupabaseClient())
+  
   return (
-    <SessionProvider session={session}>
+    <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
       <Head>
         <link
           rel="apple-touch-icon"
@@ -34,7 +43,7 @@ function MyApp({ Component, pageProps: {session, ...pageProps} }: AppProps) {
         <title>Nur</title>
       </Head>
       <Component {...pageProps} />
-    </SessionProvider>
+    </SessionContextProvider>
   );
 }
 

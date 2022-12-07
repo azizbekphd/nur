@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Body, Grid, HighlightedButton, Navbar } from "../../components";
 import useI18n from "../../i18n";
 import { CourseModel, CoursePayloadData } from "../../models";
-import fromLocaleString from "../../utils/fromLocaleString";
+import { fromLocaleString } from "../../utils";
 import styles from "../../styles/CourseDetails.module.css";
 import Link from "next/link";
 import { TeacherItem } from "../../components/Teachers";
