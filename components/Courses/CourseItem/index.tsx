@@ -1,7 +1,7 @@
 import Image from "next/image";
 import useI18n from "../../../i18n";
 import { CourseModel } from "../../../models";
-import fromLocaleString from "../../../utils/fromLocaleString";
+import { fromLocaleString } from "../../../utils";
 import styles from "./CourseItem.module.css";
 
 type CourseItemProps = {

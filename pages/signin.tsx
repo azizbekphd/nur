@@ -2,7 +2,8 @@ import type { NextPage } from "next";
 import styles from "../styles/AuthPage.module.css";
 import bg from "../public/images/library.jpg";
 import Image from "next/image";
-import { classNames, useWindowSize } from "../utils";
+import { classNames } from "../utils";
+import { useWindowSize } from "../hooks";
 import { motion } from "framer-motion";
 import {
   Checkbox,
@@ -14,19 +15,33 @@ import {
 } from "../components";
 import useI18n from "../i18n";
 import Head from "next/head";
-import { signIn } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import { a } from "@react-spring/web";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import getLocalizedError from "../lib/LocalizedError";
 
 const SignIn: NextPage = () => {
   const windowSize = useWindowSize();
-  const { S, formatString } = useI18n();
+  const { S, formatString, locale } = useI18n();
+  const supabase = useSupabaseClient();
 
   const [data, setData] = useState<{
-    email?: string;
-    password?: string;
-    remember?: boolean;
-  }>();
+    email: string;
+    password: string;
+    options: {
+      data: {
+        rememberMe: boolean;
+      };
+    };
+  }>({
+    email: "",
+    password: "",
+    options: {
+      data: {
+        rememberMe: true,
+      },
+    },
+  });
 
   return (
     <>
@@ -68,7 +83,7 @@ const SignIn: NextPage = () => {
                 label={S.email}
                 type="email"
                 placeholder={S.emailPlaceholder}
-                value={data?.email}
+                value={data.email}
                 onChange={(e: FormEvent<HTMLInputElement>) => {
                   setData({
                     ...data,
@@ -80,7 +95,7 @@ const SignIn: NextPage = () => {
                 label={S.password}
                 type="password"
                 placeholder={S.passwordPlaceholder}
-                value={data?.password}
+                value={data.password}
                 onChange={(e: FormEvent<HTMLInputElement>) => {
                   setData({
                     ...data,
@@ -91,11 +106,15 @@ const SignIn: NextPage = () => {
               <div className={classNames(styles.row, styles.indented)}>
                 <Checkbox
                   label={formatString(S.rememberForNDays, 30)}
-                  checked={data?.remember}
+                  checked={data.options.data.rememberMe}
                   onChange={(e: FormEvent<HTMLInputElement>) => {
                     setData({
                       ...data,
-                      remember: e.currentTarget.checked,
+                      options: {
+                        data: {
+                          rememberMe: e.currentTarget.checked,
+                        },
+                      },
                     });
                   }}
                 />
@@ -106,14 +125,18 @@ const SignIn: NextPage = () => {
               <div className={styles.indented}>
                 <FilledButton
                   onClick={() => {
-                    signIn("credentials", data);
+                    supabase.auth.signInWithPassword(data).then((response) => {
+                      if (response.error) {
+                        alert(getLocalizedError(response.error.name, locale))
+                      }
+                    });
                   }}
                 >
                   {S.signIn}
                 </FilledButton>
                 <OutlinedButton
                   onClick={() => {
-                    signIn("google");
+                    
                   }}
                 >
                   <Image

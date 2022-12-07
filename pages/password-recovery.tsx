@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import styles from "../styles/AuthPage.module.css";
 import bg from "../public/images/library.jpg";
 import Image from "next/image";
-import { useWindowSize } from "../utils";
+import { useWindowSize } from "../hooks";
 import { motion } from "framer-motion";
 import { FilledButton, Input, LanguageToggler } from "../components";
 import useI18n from "../i18n";
