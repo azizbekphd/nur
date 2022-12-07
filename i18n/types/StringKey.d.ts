@@ -33,6 +33,7 @@ enum StringKey {
     welcome,
     signOut,
     join,
+    loading,
 }
 
 export default StringKey;

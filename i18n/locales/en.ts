@@ -35,6 +35,7 @@ const en: I18nStrings = {
     welcome: "Welcome",
     signOut: "Sign out",
     join: "Join",
+    loading: "Loading...",
 }
 
 export default en;

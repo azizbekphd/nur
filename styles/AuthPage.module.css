@@ -92,6 +92,18 @@
     text-align: right;
 }
 
+.statusLog {
+    font-size: smaller;
+}
+
+.error {
+    border: 1px solid var(--alert);
+    border-radius: 3px;
+    color: var(--alert-text);
+    padding: 5px 10px;
+    background-color: var(--alert-translucent);
+}
+
 .googleLogo {
     margin-right: 10px;
 }

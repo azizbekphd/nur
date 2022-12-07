@@ -16,9 +16,9 @@ import {
 import useI18n from "../i18n";
 import Head from "next/head";
 import { FormEvent, useState } from "react";
-import { a } from "@react-spring/web";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import getLocalizedError from "../lib/LocalizedError";
+import { AuthResponse } from "@supabase/supabase-js";
 
 const SignIn: NextPage = () => {
   const windowSize = useWindowSize();
@@ -42,6 +42,8 @@ const SignIn: NextPage = () => {
       },
     },
   });
+
+  const [status, setStatus] = useState<AuthResponse>();
 
   return (
     <>
@@ -78,6 +80,20 @@ const SignIn: NextPage = () => {
             />
             <h1 className={styles.title}>{S.signInTitle}</h1>
             <p className={styles.subtitle}>{S.signInSubtitle}</p>
+            {status ? (
+              <p
+                className={classNames(
+                  styles.statusLog,
+                  (status?.error ?? false) && styles.error
+                )}
+              >
+                {status?.error
+                  ? getLocalizedError(status.error.name, locale)
+                  : S.loading}
+              </p>
+            ) : (
+              <></>
+            )}
             <form>
               <Input
                 label={S.email}
@@ -125,20 +141,21 @@ const SignIn: NextPage = () => {
               <div className={styles.indented}>
                 <FilledButton
                   onClick={() => {
+                    setStatus({
+                      data: {
+                        user: null,
+                        session: null,
+                      },
+                      error: null,
+                    });
                     supabase.auth.signInWithPassword(data).then((response) => {
-                      if (response.error) {
-                        alert(getLocalizedError(response.error.name, locale))
-                      }
+                      setStatus(response);
                     });
                   }}
                 >
                   {S.signIn}
                 </FilledButton>
-                <OutlinedButton
-                  onClick={() => {
-                    
-                  }}
-                >
+                <OutlinedButton onClick={() => {}}>
                   <Image
                     src={"/images/google-g.svg"}
                     width={24}

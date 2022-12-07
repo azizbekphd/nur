@@ -3,6 +3,16 @@ html {
   --orange-light: #ffaa00;
   --green: #00cc00;
   --blue: #061198;
+  --alert: #ff0000;
+
+  --orange-translucent: #ff680055;
+  --orange-light-translucent: #ffaa0055;
+  --green-translucent: #00cc0055;
+  --blue-translucent: #06119855;
+  --alert-translucent: #ff000033;
+
+  --alert-text: #8a0f1b;
+
   --gray: #828282;
   --white: #fff;
 
