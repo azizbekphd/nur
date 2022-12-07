@@ -1,5 +1,6 @@
 enum StringKey {
     nur,
+    nurAcademy,
     title,
     signIn,
     signUp,
@@ -21,6 +22,7 @@ enum StringKey {
     namePlaceholder,
     lastName,
     lastNamePlaceholder,
+    birthdate,
     signUpWith,
     alreadyHaveAnAccount,
     passwordRecoveryTitle,
@@ -33,6 +35,9 @@ enum StringKey {
     welcome,
     signOut,
     join,
+    loading,
+    next,
+    whatIsProject,
 }
 
 export default StringKey;

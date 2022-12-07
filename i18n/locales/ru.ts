@@ -2,6 +2,7 @@ import I18nStrings from "../types/I18nStrings";
 
 const ru: I18nStrings = {
     nur: "Nur",
+    nurAcademy: "Nur Academy",
     title: "Nur — {0}",
     signIn: "Войти",
     signUp: "Регистрация",
@@ -35,6 +36,10 @@ const ru: I18nStrings = {
     welcome: "Добро пожаловать",
     signOut: "Выйти",
     join: "Записаться",
+    loading: "Загрузка...",
+    birthdate: "Дата рождения",
+    next: "Дальше",
+    whatIsProject: "Что такое {0}?",
 }
 
 export default ru;

@@ -1,11 +1,11 @@
+import { Session, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HighlightedButton, LanguageToggler, TextButton, ProfileMenu } from "..";
 import useI18n from "../../../i18n";
 import { classNames } from "../../../utils";
 import styles from "./Navbar.module.css";
-import { useSession, signIn, signOut } from "next-auth/react";
 
 type NavbarProps = {
   logo?: boolean;
@@ -13,8 +13,15 @@ type NavbarProps = {
 
 const Navbar = ({ logo = true, }: NavbarProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { data: session } = useSession();
+  const supabase = useSupabaseClient();
   const { S, asPath } = useI18n();
+  const [session, setSession] = useState<Session | null>()
+
+  useEffect(()=>{
+    supabase.auth.getSession().then((session)=>{
+      setSession(session.data.session)
+    })
+  },[])
 
   return (
     <nav

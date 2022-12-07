@@ -2,6 +2,7 @@ import I18nStrings from "../types/I18nStrings";
 
 const uz: I18nStrings = {
     nur: "Nur",
+    nurAcademy: "Nur Academy",
     title: "Nur — {0}",
     signIn: "Kirish",
     signUp: "Registratsiya",
@@ -14,7 +15,7 @@ const uz: I18nStrings = {
     password: "Parol",
     passwordPlaceholder: "Parolingizni kiriting",
     rememberForNDays: "{0} kunga eslab qolish",
-    forgotPassword: "Parol esimda yo'q",
+    forgotPassword: "Parolni unutdingizmi?",
     signInWith: "{0} orqali kirish",
     dontHaveAnAccount: "Akkauntingiz yo'qmi?",
     signUpTitle: "Yangi akkaunt yaratish",
@@ -35,6 +36,10 @@ const uz: I18nStrings = {
     welcome: "Xush kelibsiz",
     signOut: "Chiqish",
     join: "Yozilish",
+    loading: "Yuklanyapti...",
+    birthdate: "Tug'ilgan sana",
+    next: "Keyingisi",
+    whatIsProject: "{} o'zi nima?"
 }
 
 export default uz;
