@@ -10,13 +10,14 @@
 
 .backgroundImage {
     object-fit: cover;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 }
 
 .contentWrapper {
     height: min-content;
+    max-height: 90%;
     width: min(100vw, 650px);
     background-color: var(--background);
     z-index: 100;
@@ -28,6 +29,7 @@
     box-shadow: var(--translucent) 0px 7px 29px 0px;
     padding: 5% 10%;
     position: relative;
+    overflow: scroll;
 }
 
 .logo {
@@ -49,6 +51,13 @@
 .content {
     width: min(90%, 23rem);
     min-width: min-content;
+}
+
+.content::before {
+    content: "";
+    position: relative;
+    display: block;
+    min-height: 5%;
 }
 
 .content form > * {
@@ -129,6 +138,7 @@
     .contentWrapper {
         width: 100vw;
         height: 100vh;
+        max-height: unset;
         min-height: max-content;
         border-radius: 0;
         padding-top: 0;

@@ -3,12 +3,12 @@ import Image from "next/image";
 import styles from "./ProfileMenu.module.css";
 import useI18n from "../../../i18n";
 import { CleanButton } from "..";
-import { useSession } from "@supabase/auth-helpers-react";
+import { useAuthSession } from "../../../hooks";
 
 type ProfileMenuProps = {}
 
 const ProfileMenu = ({}: ProfileMenuProps) => {
-  const session = useSession();
+  const { session } = useAuthSession();
   const { S } = useI18n();
   
   return (

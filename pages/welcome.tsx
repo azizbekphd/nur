@@ -164,19 +164,34 @@ const Welcome: NextPage = () => {
           </ParallaxLayer>
           <ParallaxLayer
             sticky={{
-              start: 1.2,
-              end: 1.6,
+              start: 1,
+              end: 2,
             }}
             speed={1}
           >
-            <h1>Hi</h1>
+            <div className={styles.indentedLayer} style={{
+              backgroundColor: "var(--translucent)"
+            }}>
+              <h1 style={{ fontSize: "xxx-large" }}>
+                {formatString(S.whatIsProject, S.nurAcademy)}
+              </h1>
+              <p style={{
+                fontSize: "larger"
+              }}>
+                Мы предлагаем высококачественное обучение по оригинальным
+                программам, разработанным нашими преподавателями, каждый из
+                которых имеет немалые успехи в своей области и готов поделиться
+                своими опытом и знаниями со своими учениками.Нашей целью
+                является помощь получить необходимые знания, поэтому ваша запись
+                на курсы — наша награда!
+              </p>
+            </div>
           </ParallaxLayer>
 
           {/* Page 3 */}
-          <ParallaxLayer
-            offset={2}
-            speed={1}
-          ></ParallaxLayer>
+          <ParallaxLayer offset={2} speed={1}>
+            
+          </ParallaxLayer>
         </Parallax>
       </main>
     </>
