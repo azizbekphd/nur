@@ -2,7 +2,7 @@ import { PrismaClient, Prisma } from "@prisma/client";
 import Image from "next/image";
 import useI18n from "../../../i18n";
 import { TeacherModel } from "../../../models";
-import fromLocaleString from "../../../utils";
+import { fromLocaleString } from "../../../utils";
 import { PromiseView } from "../../ui";
 import styles from "./TeacherItem.module.css";
 
